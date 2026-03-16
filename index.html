@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tamires Ferreira de Sousa | 76192 | BSC20925B | CA4 Counter</title>
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      min-height: 100vh;
+      background-color: #f4f4f4;
+    }
+
+    section {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      color: #222;
+    }
+
+    #counter-value {
+      font-size: 5rem;
+      font-weight: bold;
+      color: #222;
+    }
+
+    .btn-container {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      border: none;
+      background-color: #222;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #000;
+      transform: translateY(-2px);
+    }
+
+    .btn i {
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <div class="container">
+      <h1>Increment / Decrement Counter</h1>
+
+      <span id="counter-value">0</span>
+
+      <div class="btn-container" id="button-container">
+        <button class="btn" id="decrease">
+          <i class="fa-solid fa-minus"></i>
+          Decrease
+        </button>
+
+        <button class="btn" id="reset">
+          <i class="fa-solid fa-rotate-left"></i>
+          Reset
+        </button>
+
+        <button class="btn" id="increase">
+          <i class="fa-solid fa-plus"></i>
+          Increase
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Select the counter display and the button container
+    const counterValue = document.getElementById("counter-value");
+    const buttonContainer = document.getElementById("button-container");
+
+    // Store the current counter value
+    let count = 0;
+
+    // Listen for clicks on the button container
+    buttonContainer.addEventListener("click", (e) => {
+      // Check that the clicked element is a button
+      if (e.target.classList.contains("btn")) {
+        // Determine which button was clicked
+        if (e.target.id === "decrease") {
+          count--;
+        } else if (e.target.id === "reset") {
+          count = 0;
+        } else if (e.target.id === "increase") {
+          count++;
+        }
+
+        // Update the counter value on screen
+        counterValue.innerText = count;
+
+        // Apply the correct colour based on current value
+        if (count > 0) {
+          counterValue.style.color = "green";
+        } else if (count < 0) {
+          counterValue.style.color = "red";
+        } else {
+          counterValue.style.color = "#222";
+        }
+      }
+    });
+  </script>
+</body>
+</html>
